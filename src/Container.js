@@ -4,6 +4,7 @@ import PlayPauseToggle from "./PlayPauseToggle";
 import ResetButton from "./ResetButton";
 import Label from "./Label";
 import Timer from "./Timer";
+import { FiClock } from "react-icons/fi";
 
 class Container extends React.Component {
   constructor(props) {
@@ -84,10 +85,12 @@ class Container extends React.Component {
   };
   sessionCountDown = interval => setInterval(interval, 1000);
   breakCountDown = (interval) => setInterval(interval, 1000);
+  timers = (interval) => this.sessionCountDown(interval);
 
   componentDidMount() {
-    this.sessionCountDown = setInterval(this.sessionIntervalCount, 1000);
+    //this.sessionCountDown = setInterval(this.sessionIntervalCount, 1000);
     // this.breakCountDown = setInterval(this.breakIntervalCount, 1000);
+    this.timers(this.sessionIntervalCount).then(this.breakCountDown = setInterval(this.breakIntervalCount))
   }
 
   sessionIntervalCount = () => {

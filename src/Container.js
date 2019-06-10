@@ -4,20 +4,18 @@ import PlayPauseToggle from "./PlayPauseToggle";
 import ResetButton from "./ResetButton";
 import Label from "./Label";
 import Timer from "./Timer";
-import { FiClock } from "react-icons/fi";
+//import { FiClock } from "react-icons/fi";
 
 class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionSecondsRemaining: 1499,
-      breakSecondsRemaining: 300,
+      sessionSecondsRemaining: 1500, //in raw seconds
+      breakSecondsRemaining: 300, //in raw seconds
+      sessionLength: 25, //in minutes
+      breakLength: 5, // in minutes
       displaySeconds: "",
       displayMinutes: "",
-      breakTimeSeconds: "",
-      breakTimeMinutes: "",
-      sessionLength: 25,
-      breakLength: 5,
       //playing: false,
       pause: true
     };
@@ -26,7 +24,7 @@ class Container extends React.Component {
 
   alarmSound = new Audio(
     "https://res.cloudinary.com/dmkct6wfu/video/upload/v1557109540/pomodoroAppAssets/alarm.mp3"
-  );
+  ); //js audio object that handles playing the alarm sound
 
   secondsToHms(d) {
     let m = Math.floor((d % 3600) / 60);
@@ -34,37 +32,68 @@ class Container extends React.Component {
 
     var mDisplay = m < 10 ? "0" + m.toString() : m.toString();
 
-    var sDisplay = s < 10 ? "0" + s.toString() : s.toString();
+    var sDisplay = s < 10 ? "0" + s.toString() : s.toString(); 
+    /*
+        both vars sDisplay and mDisplay 
+        start as numbers but are converted to string values.
+        The function converts raw numbers, and if the value
+        is less than 10 from either display variable, the function
+        will display a single digit value. A string 
+        value of "0" is concatenated to the string converted numerical value to
+        pad the value out.
+    */ 
 
     this.setState(prevState => ({
-      displayMinutes: mDisplay,
-      displaySeconds: sDisplay
+      displayMinutes: mDisplay, //sets state.displayMinutes value to mDisplay
+      displaySeconds: sDisplay //Sets state.displaySeconds value to sDisplay
     }));
   }
 
-  incrementItem = labelTitle => {
-    labelTitle === "Session" //if
-      ? this.setState(prevState => ({
-          sessionLength: prevState.sessionLength + 1,
-          sessionSecondsRemaining: prevState.sessionSecondsRemaining + 60
-        })) //else
-      : this.setState(prevState => ({
-          breakLength: prevState.breakLength + 1,
-          breakSecondsRemaining: prevState.breakSecondsRemaining + 60
-        }));
-  };
+    
 
-  decrementItem = labelTitle => {
-    labelTitle === "Session"
-      ? this.setState(prevState => ({
-          sessionLength: prevState.sessionLength - 1,
-          sessionSecondsRemaining: prevState.sessionSecondsRemaining - 60
-        }))
-      : this.setState(prevState => ({
-          breakLength: prevState.breakLength - 1,
-          breakSecondsRemaining: prevState.breakSecondsRemaining - 60
-        }));
-  };
+    incrementItem = labelTitle => {
+        switch (labelTitle) {
+            case 'Session':
+                if (this.state.sessionLength < 60 && this.state.pause){
+                    this.setState(prevState => ({
+                        sessionLength: prevState.sessionLength + 1,
+                        sessionSecondsRemaining: prevState.sessionSecondsRemaining + 60
+                    }))  
+                };
+                break;
+            case 'Break':
+                if (this.state.breakLength < 60 && this.state.pause){
+                    this.setState(prevState => ({
+                        breakLength: prevState.breakLength + 1,
+                        breakSecondsRemaining: prevState.breakSecondsRemaining + 60
+                    }))  
+                };
+                break;
+            default: break;
+        }  
+    }
+
+    decrementItem = labelTitle => {
+        switch (labelTitle){
+            case 'Session':
+                if (this.state.sessionLength > 1 && this.state.pause){
+                    this.setState(prevState => ({
+                        sessionLength: prevState.sessionLength - 1,
+                        sessionSecondsRemaining: prevState.sessionSecondsRemaining - 60
+                    }))
+                };
+                break;
+            case 'Break':
+                if (this.state.breakLength > 1 && this.state.pause) {
+                    this.setState(prevState => ({
+                        breakLength: prevState.breakLength - 1,
+                        breakSecondsRemaining: prevState.breakSecondsRemaining - 60
+                    }))
+                };
+                break;
+            default: break;
+        }
+    }
 
   sessionTimeSetter = () => {
     let readableSessionTime = this.secondsToHms(
@@ -87,23 +116,27 @@ class Container extends React.Component {
   breakCountDown = (interval) => setInterval(interval, 1000);
   timers = (interval) => this.sessionCountDown(interval);
 
-  componentDidMount() {
-    //this.sessionCountDown = setInterval(this.sessionIntervalCount, 1000);
-    // this.breakCountDown = setInterval(this.breakIntervalCount, 1000);
-    this.timers(this.sessionIntervalCount).then(this.breakCountDown = setInterval(this.breakIntervalCount))
-  }
+  componentDidMount(){
+    this.sessionCountDown = setInterval(this.sessionIntervalCount, 1000);
+    //this.breakCountDown = setInterval(this.breakIntervalCount, 1000);
+    //this.timers(this.sessionIntervalCount).then(this.breakCountDown = setInterval(this.breakIntervalCount))
+  };
 
   sessionIntervalCount = () => {
     this.state.pause === false && this.sessionTimeSetter();
     console.log(
-      "display minutes string: " + this.state.diplayMinutes,
-      "display seconds string: " + this.state.displaySeconds,
-      "int: " + this.state.sessionSecondsRemaining
+        "outputs literals for session interval",
+      "display minutes string: " + this.state.diplayMinutes + "|",
+      "display seconds string: " + this.state.displaySeconds + "|",
+      "int: " + this.state.sessionSecondsRemaining + "|",
+      "end of outputting literals for session interval"
+
     );
     console.log(
-      "display minutes string typeof: " + typeof this.state.displayMinutes,
-      "displayseconds string typeof: " + typeof this.state.displaySeconds,
-      "int typeof: " + typeof this.state.sessionSecondsRemaining
+        "outputs typeofs of literal output for session interval",
+      "  display minutes string typeof: " + typeof this.state.displayMinutes + "|",
+      "  displayseconds string typeof: " + typeof this.state.displaySeconds + "|",
+      "int typeof: " + typeof this.state.sessionSecondsRemaining + "|"
     );
     if (
       this.state.displayMinutes === "00" &&
@@ -155,7 +188,7 @@ class Container extends React.Component {
       breakLength: 5
     });
   };
-
+    
   render() {
     return (
       <div>

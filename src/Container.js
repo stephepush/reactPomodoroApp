@@ -17,6 +17,7 @@ class Container extends React.Component {
       displaySeconds: "",
       displayMinutes: "",
       //playing: false,
+      label: "session",
       pause: true
     };
     //this.sessionCountDown=this.sessionCountDown.bind(this);
@@ -95,7 +96,8 @@ class Container extends React.Component {
         }
     }
 
-  sessionTimeSetter = () => {
+  sessionTimeValue = () => {
+    //TLDR: Determines the amount of seconds left for a work session and filters it through secondsToHms func
     let readableSessionTime = this.secondsToHms(
       this.state.sessionSecondsRemaining
     );
@@ -105,70 +107,56 @@ class Container extends React.Component {
     });
   };
 
-  breakTimeSetter = () => {
+  breakTimeValue = () => {
+    //TLDR: Determines the amount of seconds left for a break session and filters it through secondsToHms func
     let readableBreakTime = this.secondsToHms(this.state.breakSecondsRemaining);
     this.setState({
       breakSecondsRemaining: this.state.breakSecondsRemaining - 1,
       breakTime: readableBreakTime - 1
     });
   };
-  sessionCountDown = interval => setInterval(interval, 1000);
-  breakCountDown = (interval) => setInterval(interval, 1000);
-  timers = (interval) => this.sessionCountDown(interval);
+  
+  //timers = (interval) => this.sessionCountDown(interval);
 
   componentDidMount(){
-    this.sessionCountDown = setInterval(this.sessionIntervalCount, 1000);
-    //this.breakCountDown = setInterval(this.breakIntervalCount, 1000);
-    //this.timers(this.sessionIntervalCount).then(this.breakCountDown = setInterval(this.breakIntervalCount))
+      
+    this.sessionCountDown = setInterval(this.sessionIntervalSetter, 250);
+    
   };
 
-  sessionIntervalCount = () => {
-    this.state.pause === false && this.sessionTimeSetter();
-    console.log(
-        "outputs literals for session interval",
-      "display minutes string: " + this.state.diplayMinutes + "|",
-      "display seconds string: " + this.state.displaySeconds + "|",
-      "int: " + this.state.sessionSecondsRemaining + "|",
-      "end of outputting literals for session interval"
-
-    );
-    console.log(
-        "outputs typeofs of literal output for session interval",
-      "  display minutes string typeof: " + typeof this.state.displayMinutes + "|",
-      "  displayseconds string typeof: " + typeof this.state.displaySeconds + "|",
-      "int typeof: " + typeof this.state.sessionSecondsRemaining + "|"
-    );
+  sessionIntervalSetter = () => {
+    this.state.pause === false && this.sessionTimeValue();
     if (
       this.state.displayMinutes === "00" &&
       this.state.displaySeconds === "00"
     ) {
       clearInterval(this.sessionCountDown);
+      console.log("before setState runs: " + this.state.sessionSecondsRemaining + "\n")
+      this.setState({
+          sessionSecondsRemaining: this.state.sessionLength * 60,
+      })
+      console.log("after setState runs: " + this.state.sessionSecondsRemaining )
       this.playAlarm();
-      this.breakCountDown(this.breakIntervalCount);
+      this.breakCountDown = setInterval(this.breakIntervalSetter, 250);
+      //this.breakCountDown(this.breakIntervalSetter);
     }
   };
 
-  breakIntervalCount = () => {
-    this.state.pause === false && this.breakTimeSetter();
-    /* console.log(
-      "display minutes string: " + this.state.displayMinutes,
-      "display seconds string: " + this.state.displaySeconds,
-      "int: " + this.state.breakSecondsRemaining
-    );
-    console.log(
-      "string displayMinutes typeof: " + typeof this.state.displayMinutes,
-      "string displaySeconds typeof: " + typeof this.state.displaySeconds,
-      "int typeof " + typeof this.state.sessionSecondsRemaining
-    ); */
+  breakIntervalSetter = () => {
+    this.state.pause === false && this.breakTimeValue();
     if (
       this.state.displayMinutes === "00" &&
       this.state.displaySeconds === "00"
     ) {
       clearInterval(this.breakCountDown);
+      this.setState({
+        breakSecondsRemaining: this.state.breakLength * 60,
+      })
       this.playAlarm();
-      this.sessionCountDown(this.sessionIntervalCount);
+      this.sessionCountDown = setInterval(this.sessionIntervalSetter, 250);
     }
   };
+
 
   playAlarm = () => {
     this.alarmSound.play();
@@ -218,9 +206,7 @@ class Container extends React.Component {
           minutes={this.state.displayMinutes}
           seconds={this.state.displaySeconds}
         />
-        {/*session ints: {this.state.sessionSecondsRemaining}
-        session string: {this.state.displaySeconds}
-    session ints typeof:*/}
+        
         <PlayPauseToggle status={this.togglePause} />
         <ResetButton reset={this.resetClock} />
       </div>

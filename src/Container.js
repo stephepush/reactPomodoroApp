@@ -9,22 +9,23 @@ import Timer from "./Timer";
 class Container extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sessionSecondsRemaining: 1500, //in raw seconds
-      breakSecondsRemaining: 300, //in raw seconds
-      sessionLength: 25, //in minutes
-      breakLength: 5, // in minutes
-      displaySeconds: "00",
-      displayMinutes: 25,
-      //playing: false,
-      userInteraction: false,
-      label: "session",
-      pause: true
-    };
-    //this.sessionCountDown=this.sessionCountDown.bind(this);
+        this.state = {
+        sessionSecondsRemaining: 1500, //in raw seconds
+        breakSecondsRemaining: 300, //in raw seconds
+        sessionLength: 25, //in minutes
+        breakLength: 5, // in minutes
+        displaySeconds: "00",
+        displayMinutes: 25,
+        //playing: false,
+        userInteraction: false,
+        label: "session",
+        pause: true,
+        timerType: "session",
+        //this.sessionCountDown=this.sessionCountDown.bind(this);
+        
+    }
     this.secondsToHms = this.secondsToHms.bind(this);
-  }
-
+}
   alarmSound = new Audio(
     "https://res.cloudinary.com/dmkct6wfu/video/upload/v1557109540/pomodoroAppAssets/alarm.mp3"
   ); //js audio object that handles playing the alarm sound
@@ -240,6 +241,7 @@ class Container extends React.Component {
         />
        
         <Timer 
+          id="time-left"
           minutes={this.state.displayMinutes }
           seconds={this.state.displaySeconds}
         />
@@ -250,5 +252,4 @@ class Container extends React.Component {
     );
   }
 }
-
 export default Container;

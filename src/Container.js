@@ -159,6 +159,9 @@ class Container extends React.Component {
 
   sessionIntervalSetter = () => {
     this.state.pause === false && this.sessionTimeValue();
+    this.setState({
+        timerType: "session", 
+    })
     if (
       this.state.displayMinutes === "00" &&
       this.state.displaySeconds === "00"
@@ -177,6 +180,9 @@ class Container extends React.Component {
 
   breakIntervalSetter = () => {
     this.state.pause === false && this.breakTimeValue();
+    this.setState({
+        timerType: "break", 
+    })
     if (
       this.state.displayMinutes === "00" &&
       this.state.displaySeconds === "00"
@@ -222,7 +228,9 @@ class Container extends React.Component {
         Display time: {this.state.displayMinutes}:{this.state.displaySeconds}
         <br />
         Incremented/Decremented User Adjusted time: {this.state.sessionLength}
-        <h1>Pomodoro Clock!</h1>
+        <br /> 
+        TimerType: {this.state.timerType}
+        <h1 class="common-color">Pomodoro Clock!</h1>
         <Label
           title="Break"
           id="break-label"
@@ -246,8 +254,8 @@ class Container extends React.Component {
           seconds={this.state.displaySeconds}
         />
         
-        <PlayPauseToggle status={this.togglePause} />
-        <ResetButton reset={this.resetClock} />
+        <PlayPauseToggle  id="start_stop" status={this.togglePause} />
+        <ResetButton id="reset" reset={this.resetClock} />
       </div>
     );
   }

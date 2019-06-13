@@ -5,7 +5,7 @@ class ResetButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.reset}>
+        <button class="common-color" onClick={this.props.reset}>
           <FiRefreshCcw />
         </button>
       </div>

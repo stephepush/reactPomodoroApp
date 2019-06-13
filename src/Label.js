@@ -5,8 +5,9 @@ import IncrementButton from "./IncrementButton";
 function Label(props) {
   return (
     <div>
-      <h2>
+      <h2 class="common-color">
         <IncrementButton
+          
           increment={props.increment}
           title={props.title}
           disabled={props.isPaused === true ? false : true}
@@ -20,7 +21,7 @@ function Label(props) {
           disabled={props.isPaused === true ? false : true}
         />
       </h2>
-      {props.value}
+      <p class="common-color">{props.value}</p>
     </div>
   );
 }

@@ -23,3 +23,14 @@ input[type="reset"] {
   cursor: pointer;
   outline: inherit;
 }
+
+
+body {
+  display: grid;
+  /*background-color: #004369;*/
+  background-color: #E8B301;
+}
+
+.common-color {
+  color: #01578C;
+}

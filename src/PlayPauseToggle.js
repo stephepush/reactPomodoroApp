@@ -6,7 +6,7 @@ class PlayPauseToggle extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.status}>
+        <button class="common-color" onClick={this.props.status}>
           <FiPlay />
           <FiPause />
         </button>

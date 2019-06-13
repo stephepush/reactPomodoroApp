@@ -2,7 +2,7 @@
   font-family: sans-serif;
   text-align: center;
 }
-
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
 @import url(//db.onlinewebfonts.com/c/63f874d192fb3892d88d5e26f942b5e2?family=DS-Digital);
 @font-face {font-family: "DS-Digital";
   src: url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.eot");
@@ -33,4 +33,6 @@ body {
 
 .common-color {
   color: #01578C;
+  font-family: 'Fugaz One';
 }
+

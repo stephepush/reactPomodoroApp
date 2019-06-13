@@ -14,13 +14,15 @@ class Container extends React.Component {
       breakSecondsRemaining: 300, //in raw seconds
       sessionLength: 25, //in minutes
       breakLength: 5, // in minutes
-      displaySeconds: "",
-      displayMinutes: "",
+      displaySeconds: "00",
+      displayMinutes: 25,
       //playing: false,
+      userInteraction: false,
       label: "session",
       pause: true
     };
     //this.sessionCountDown=this.sessionCountDown.bind(this);
+    this.secondsToHms = this.secondsToHms.bind(this);
   }
 
   alarmSound = new Audio(
@@ -50,15 +52,21 @@ class Container extends React.Component {
     }));
   }
 
-    
+    userInteractionCheck = () =>{
+        this.setState({userInteraction: true})
+    }
 
     incrementItem = labelTitle => {
+        this.userInteractionCheck()
+        console.log(this.userInteractionCheck())
         switch (labelTitle) {
             case 'Session':
                 if (this.state.sessionLength < 60 && this.state.pause){
                     this.setState(prevState => ({
-                        sessionLength: prevState.sessionLength + 1,
-                        sessionSecondsRemaining: prevState.sessionSecondsRemaining + 60
+                        sessionLength: prevState.sessionLength +1,
+                        sessionSecondsRemaining: (prevState.sessionLength + 1) *60,
+                        displayMinutes: this.state.sessionLength +1,
+                        displaySeconds: "00",
                     }))  
                 };
                 break;
@@ -66,7 +74,9 @@ class Container extends React.Component {
                 if (this.state.breakLength < 60 && this.state.pause){
                     this.setState(prevState => ({
                         breakLength: prevState.breakLength + 1,
-                        breakSecondsRemaining: prevState.breakSecondsRemaining + 60
+                        breakSecondsRemaining: (prevState.breakLength +1) * 60,
+                        displayMinutes: this.state.breakLength +1,
+                        displaySeconds: "00",
                     }))  
                 };
                 break;
@@ -75,12 +85,17 @@ class Container extends React.Component {
     }
 
     decrementItem = labelTitle => {
+        
+        this.userInteractionCheck()
+        console.log(this.state.userInteraction)
         switch (labelTitle){
             case 'Session':
                 if (this.state.sessionLength > 1 && this.state.pause){
                     this.setState(prevState => ({
                         sessionLength: prevState.sessionLength - 1,
-                        sessionSecondsRemaining: prevState.sessionSecondsRemaining - 60
+                        sessionSecondsRemaining: (prevState.sessionLength - 1) *60,
+                        displayMinutes: this.state.sessionLength -1,
+                        displaySeconds: "00",
                     }))
                 };
                 break;
@@ -88,7 +103,9 @@ class Container extends React.Component {
                 if (this.state.breakLength > 1 && this.state.pause) {
                     this.setState(prevState => ({
                         breakLength: prevState.breakLength - 1,
-                        breakSecondsRemaining: prevState.breakSecondsRemaining - 60
+                        breakSecondsRemaining: (prevState.breakLength - 1) * 60,
+                        displayMinutes: this.state.sessionLength -1,
+                        displaySeconds: "00",
                     }))
                 };
                 break;
@@ -97,29 +114,44 @@ class Container extends React.Component {
     }
 
   sessionTimeValue = () => {
-    //TLDR: Determines the amount of seconds left for a work session and filters it through secondsToHms func
-    let readableSessionTime = this.secondsToHms(
-      this.state.sessionSecondsRemaining
-    );
+    /* TLDR: Determines the amount of 
+        seconds left and converts that raw value into a 
+        readable time for a work session and filters it 
+        through secondsToHms function
+    */
+    // let readableSessionTime = this.secondsToHms(
+    //     this.state.sessionSecondsRemaining
+    // );
+    this.secondsToHms(this.state.sessionSecondsRemaining);
     this.setState({
+      //sessionSecondsRemaining: this.state.sessionSecondsRemaining - 1,
       sessionSecondsRemaining: this.state.sessionSecondsRemaining - 1,
-      sessionTime: readableSessionTime - 1
+      //sessionTime: readableSessionTime - 1
     });
   };
 
   breakTimeValue = () => {
-    //TLDR: Determines the amount of seconds left for a break session and filters it through secondsToHms func
-    let readableBreakTime = this.secondsToHms(this.state.breakSecondsRemaining);
+    /* TLDR: Determines the amount of 
+        seconds left and converts that raw value into a 
+        readable time for a break session and filters it 
+        through secondsToHms function
+    */
+    // let readableBreakTime = this.secondsToHms(
+    //     this.state.breakSecondsRemaining
+    // );
+    this.secondsToHms(this.state.breakSecondsRemaining);
     this.setState({
+      //breakSecondsRemaining: this.state.breakSecondsRemaining - 1,
       breakSecondsRemaining: this.state.breakSecondsRemaining - 1,
-      breakTime: readableBreakTime - 1
+      //breakTime: readableBreakTime - 1
     });
   };
   
   //timers = (interval) => this.sessionCountDown(interval);
 
   componentDidMount(){
-      
+    console.log(this.state.userInteraction)
+    this.userInteractionCheck();
     this.sessionCountDown = setInterval(this.sessionIntervalSetter, 250);
     
   };
@@ -163,8 +195,10 @@ class Container extends React.Component {
   };
 
   togglePause = () => {
+    
     this.setState({
-      pause: !this.state.pause
+      pause: !this.state.pause,
+      userInteraction: true
     });
   };
 
@@ -185,6 +219,8 @@ class Container extends React.Component {
         Break time raw seconds: {this.state.breakSecondsRemaining}
         <br />
         Display time: {this.state.displayMinutes}:{this.state.displaySeconds}
+        <br />
+        Incremented/Decremented User Adjusted time: {this.state.sessionLength}
         <h1>Pomodoro Clock!</h1>
         <Label
           title="Break"
@@ -202,8 +238,9 @@ class Container extends React.Component {
           decrement={this.decrementItem}
           isPaused={this.state.pause}
         />
-        <Timer
-          minutes={this.state.displayMinutes}
+       
+        <Timer 
+          minutes={this.state.displayMinutes }
           seconds={this.state.displaySeconds}
         />
         

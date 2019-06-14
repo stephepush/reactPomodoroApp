@@ -2,6 +2,9 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+
+
 @import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
 @import url(//db.onlinewebfonts.com/c/63f874d192fb3892d88d5e26f942b5e2?family=DS-Digital);
 @font-face {font-family: "DS-Digital";
@@ -36,3 +39,9 @@ body {
   font-family: 'Fugaz One';
 }
 
+/* #time-left {
+  border: 1rem solid black;
+  width: 33%;
+  height: 50%;
+  border-radius: 25%; 
+} */

@@ -9,10 +9,10 @@ const timerStyle ={
 class Timer extends React.Component {
   render() {
     return (
-      <div id="time-left">
+      <section id="time-left">
         {/* Timer component (You send state down to me and I display it!) */}
         <p className="timer-display" style={timerStyle}> {this.props.minutes}:{this.props.seconds} </p>
-      </div>
+      </section>
     );
   }
 }

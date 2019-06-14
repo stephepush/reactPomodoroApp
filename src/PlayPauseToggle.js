@@ -5,12 +5,12 @@ import { FiPause } from "react-icons/fi";
 class PlayPauseToggle extends React.Component {
   render() {
     return (
-      <div>
+      <section box>
         <button class="common-color" onClick={this.props.status}>
           <FiPlay />
           <FiPause />
         </button>
-      </div>
+      </section>
     );
   }
 }

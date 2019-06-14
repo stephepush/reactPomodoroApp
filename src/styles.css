@@ -27,6 +27,10 @@ input[type="reset"] {
   outline: inherit;
 }
 
+#container-div{
+  
+}
+
 
 body {
   display: grid;
@@ -45,3 +49,17 @@ body {
   height: 50%;
   border-radius: 25%; 
 } */
+
+/* .arrow-ui {
+  display: inline-block;
+  font-size: 1.75rem;
+} */
+
+.incDecContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+  
+}
+

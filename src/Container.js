@@ -220,7 +220,7 @@ class Container extends React.Component {
     
   render() {
     return (
-      <div id="container-div">
+      <div id="container" class="container">
         {/* Session time raw seconds: {this.state.sessionSecondsRemaining}
         <br />
         Break time raw seconds: {this.state.breakSecondsRemaining}
@@ -230,7 +230,9 @@ class Container extends React.Component {
         Incremented/Decremented User Adjusted time: {this.state.sessionLength}
         <br /> 
         TimerType: {this.state.timerType} */}
-        <h1 class="common-color header">Pomodoro Clock!</h1>
+        <header class="one boxes">
+            <h1 class="common-color header">Pomodoro Clock!</h1>
+        </header>
         <Label
           title="Break"
           id="break-label"

@@ -4,7 +4,7 @@ import IncrementButton from "./IncrementButton";
 
 function Label(props) {
   return (
-    <section>
+    <section class="boxes two">
       <h2 class="common-color box">{props.title + " Length"}</h2>
       <div class="incDecContainer box">
         <p class="common-color arrow-ui">

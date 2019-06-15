@@ -59,7 +59,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* justify-content: center; */
+  justify-content: space-between;
   
 }
 
@@ -91,9 +91,31 @@ body {
 .four {
   /* order:5; */
   grid-column: 4/5;
+  align-content: center;
 }
 
 .five {
   /* order:6; */
   grid-column: 4/5;
+  align-items: center;
+}
+
+
+p.arrow-ui {
+  font-size: 2rem;
+  text-align: justify;
+}
+
+header>h1{
+  font-size: 3rem;
+  text-align: center;
+}
+
+.timer-display{
+  text-align: center;
+}
+
+.play-pause,.reset{
+  /* text-align: center; */
+  align-items: center;
 }

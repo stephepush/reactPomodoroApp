@@ -235,7 +235,7 @@ class Container extends React.Component {
         </header>
         <div class="wrapper two">
             <Label
-        
+            //className="break"
             title="Break"
             id="break-label"
             value={this.state.breakLength}
@@ -244,7 +244,7 @@ class Container extends React.Component {
             isPaused={this.state.pause}
             />
             <Label
-            
+            //className="session"
             title="Session"
             id="session-label"
             value={this.state.sessionLength}

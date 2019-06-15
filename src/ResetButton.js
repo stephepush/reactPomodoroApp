@@ -4,8 +4,8 @@ import { FiRefreshCcw } from "react-icons/fi";
 class ResetButton extends React.Component {
   render() {
     return (
-      <section class="boxes five">
-        <button class="common-color" onClick={this.props.reset}>
+      <section className="boxes five">
+        <button className="common-color" onClick={this.props.reset}>
           <FiRefreshCcw />
         </button>
       </section>

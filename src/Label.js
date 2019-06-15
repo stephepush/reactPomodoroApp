@@ -4,18 +4,18 @@ import IncrementButton from "./IncrementButton";
 
 function Label(props) {
   return (
-    <section class="boxes two">
-      <h2 class="common-color box">{props.title + " Length"}</h2>
-      <div class="incDecContainer box">
-        <p class="common-color arrow-ui">
+    <section className="boxes">
+      <h2 className="common-color box">{props.title + " Length"}</h2>
+      <div className="incDecContainer box">
+        <p className="common-color arrow-ui">
           <IncrementButton
             increment={props.increment}
             title={props.title}
             disabled={props.isPaused === true ? false : true}
           />
         </p>
-        <p class="common-color arrow-ui">{props.value}</p>
-        <p class="common-color arrow-ui">
+        <p className="common-color arrow-ui">{props.value}</p>
+        <p className="common-color arrow-ui">
           <DecrementButton
             decrement={props.decrement}
             title={props.title}

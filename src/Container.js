@@ -220,7 +220,7 @@ class Container extends React.Component {
     
   render() {
     return (
-      <div id="container" class="container">
+      <div id="container" className="container">
         {/* Session time raw seconds: {this.state.sessionSecondsRemaining}
         <br />
         Break time raw seconds: {this.state.breakSecondsRemaining}
@@ -230,26 +230,29 @@ class Container extends React.Component {
         Incremented/Decremented User Adjusted time: {this.state.sessionLength}
         <br /> 
         TimerType: {this.state.timerType} */}
-        <header class="one boxes">
-            <h1 class="common-color header">Pomodoro Clock!</h1>
+        <header className="one boxes">
+            <h1 className="common-color header">Pomodoro Clock!</h1>
         </header>
-        <Label
-          title="Break"
-          id="break-label"
-          value={this.state.breakLength}
-          increment={this.incrementItem}
-          decrement={this.decrementItem}
-          isPaused={this.state.pause}
-        />
-        <Label
-          title="Session"
-          id="session-label"
-          value={this.state.sessionLength}
-          increment={this.incrementItem}
-          decrement={this.decrementItem}
-          isPaused={this.state.pause}
-        />
-       
+        <div class="wrapper two">
+            <Label
+        
+            title="Break"
+            id="break-label"
+            value={this.state.breakLength}
+            increment={this.incrementItem}
+            decrement={this.decrementItem}
+            isPaused={this.state.pause}
+            />
+            <Label
+            
+            title="Session"
+            id="session-label"
+            value={this.state.sessionLength}
+            increment={this.incrementItem}
+            decrement={this.decrementItem}
+            isPaused={this.state.pause}
+            />
+       </div>
         <Timer 
           id="time-left"
           minutes={this.state.displayMinutes }

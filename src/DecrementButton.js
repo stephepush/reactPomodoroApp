@@ -5,7 +5,7 @@ import { FiArrowDown } from "react-icons/fi";
 function DecrementButton(props) {
   return (
     <div>
-      <button class="common-color arrows" disabled={props.disabled} onClick={() => props.decrement(props.title)}>
+      <button className="common-color arrows" disabled={props.disabled} onClick={() => props.decrement(props.title)}>
         <FiArrowDown />
       </button>
     </div>

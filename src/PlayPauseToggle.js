@@ -5,8 +5,8 @@ import { FiPause } from "react-icons/fi";
 class PlayPauseToggle extends React.Component {
   render() {
     return (
-      <section class="boxes four">
-        <button class="common-color" onClick={this.props.status}>
+      <section className="boxes four">
+        <button className="common-color" onClick={this.props.status}>
           <FiPlay />
           <FiPause />
         </button>

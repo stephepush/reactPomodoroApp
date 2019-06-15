@@ -27,9 +27,9 @@ input[type="reset"] {
   outline: inherit;
 }
 
-#container-div{
+/* #container-div{
 
-}
+} */
 
 
 body {
@@ -60,18 +60,26 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  padding-top: 0;
+  height: 1%
   
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: minmax(100px, auto);
+  /* grid-template-rows: minmax(100px, auto); */
+  grid-template-rows: 15% 20% 30% 5%;
 }
 
 .one {
   grid-column: 2/6;
   /* order:-1; */
+  
+}
+
+h1{
+  font-size: 2vw;
 }
 
 .two{
@@ -113,9 +121,20 @@ header>h1{
 
 .timer-display{
   text-align: center;
+  padding-bottom: 10%;
 }
 
 .play-pause,.reset{
   /* text-align: center; */
   align-items: center;
+}
+
+@media (max-width: 700px) {
+  header>h1{
+    font-size: 2.25rem;
+  }
+  p.arrow-ui {
+    font-size: 1.5rem;
+    text-align: justify;
+  }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 
+import './styles.css'
 import PlayPauseToggle from "./PlayPauseToggle";
 import ResetButton from "./ResetButton";
 import Label from "./Label";

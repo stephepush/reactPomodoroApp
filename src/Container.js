@@ -256,6 +256,7 @@ class Container extends React.Component {
        </div>
         <Timer 
           id="time-left"
+          timerType={this.state.timerType}
           minutes={this.state.displayMinutes }
           seconds={this.state.displaySeconds}
         />

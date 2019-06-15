@@ -242,8 +242,10 @@ class Container extends React.Component {
       breakLength: 5
     });
   };
-  //Further work needs to be done with the resetClock method so that the project can pass
-  //freeCodeCamp tests but I'm gonna call it a finished project today (6/15/19)
+  //Further work needs to be done with the 
+  //resetClock method so that the project can pass
+  //freeCodeCamp tests but I'm gonna call it a 
+  //finished project today (6/15/19)
     
   render() {
     return (

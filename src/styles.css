@@ -96,22 +96,37 @@ h1{
   grid-column: 2/6;
 }
 
-.four {
+.four, .five {
   /* order:5; */
-  grid-column: 4/5;
-  align-content: center;
+  grid-column: 3/5;
+  display:flex;
+  justify-content: center;
 }
 
-.five {
-  /* order:6; */
-  grid-column: 4/5;
-  align-items: center;
+.five{
+  height: 2%;
+}
+
+.timer-display{
+  margin-top: 5%;
 }
 
 
 p.arrow-ui {
   font-size: 2rem;
   text-align: justify;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 70%;
+}
+
+.lengthName{
+  margin-top: 1rem;
+  margin-bottom: 1%;
+}
+
+p.lengthValue{
+  font-size: 5rem;
 }
 
 header>h1{
@@ -136,5 +151,8 @@ header>h1{
   p.arrow-ui {
     font-size: 1.5rem;
     text-align: justify;
+  }
+  .lengthName{
+    font-size: 1.15rem;
   }
 }

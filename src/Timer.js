@@ -3,7 +3,7 @@ import React from "react";
 
 const timerStyle ={
   color: "black",
-  fontSize: "5rem",
+  fontSize: "7rem",
   fontFamily: "DS-Digital",
 }
 class Timer extends React.Component {

@@ -67,9 +67,15 @@ class Container extends React.Component {
                     this.setState(prevState => ({
                         sessionLength: prevState.sessionLength +1,
                         sessionSecondsRemaining: (prevState.sessionLength + 1) *60,
-                        displayMinutes: this.state.sessionLength +1,
-                        displaySeconds: "00",
-                    }))  
+                        //displayMinutes: this.state.sessionLength +1,
+                        //displaySeconds: "00",
+                    }));
+                    if(this.state.timerType === "session"){
+                        this.setState(prevState => ({
+                            displayMinutes: this.state.sessionLength +1,
+                            displaySeconds: "00",
+                        }))
+                    } 
                 };
                 break;
             case 'Break':
@@ -77,10 +83,16 @@ class Container extends React.Component {
                     this.setState(prevState => ({
                         breakLength: prevState.breakLength + 1,
                         breakSecondsRemaining: (prevState.breakLength +1) * 60,
-                        displayMinutes: this.state.breakLength +1,
-                        displaySeconds: "00",
-                    }))  
-                };
+                        // displayMinutes: this.state.breakLength +1,
+                        // displaySeconds: "00",
+                    }));
+                    if(this.state.timerType === "break"){
+                        this.setState(prevState => ({
+                            displayMinutes: this.state.breakLength +1,
+                            displaySeconds: "00",
+                        }))
+                    }  
+                } 
                 break;
             default: break;
         }  
@@ -96,9 +108,15 @@ class Container extends React.Component {
                     this.setState(prevState => ({
                         sessionLength: prevState.sessionLength - 1,
                         sessionSecondsRemaining: (prevState.sessionLength - 1) *60,
-                        displayMinutes: this.state.sessionLength -1,
-                        displaySeconds: "00",
-                    }))
+                        //displayMinutes: this.state.sessionLength -1,
+                        //displaySeconds: "00",
+                    }));
+                    if(this.state.timerType === "session"){
+                        this.setState(prevState => ({
+                            displayMinutes: this.state.sessionLength -1,
+                            displaySeconds: "00",
+                        }))
+                    }
                 };
                 break;
             case 'Break':
@@ -106,9 +124,15 @@ class Container extends React.Component {
                     this.setState(prevState => ({
                         breakLength: prevState.breakLength - 1,
                         breakSecondsRemaining: (prevState.breakLength - 1) * 60,
-                        displayMinutes: this.state.sessionLength -1,
-                        displaySeconds: "00",
-                    }))
+                        // displayMinutes: this.state.sessionLength -1,
+                        // displaySeconds: "00",
+                    }));
+                    if(this.state.timerType === "break"){
+                        this.setState(prevState => ({
+                            displayMinutes: this.state.breakLength -1,
+                            displaySeconds: "00",
+                        }))
+                    }  
                 };
                 break;
             default: break;
@@ -218,6 +242,8 @@ class Container extends React.Component {
       breakLength: 5
     });
   };
+  //Further work needs to be done with the resetClock method so that the project can pass
+  //freeCodeCamp tests but I'm gonna call it a finished project today (6/15/19)
     
   render() {
     return (

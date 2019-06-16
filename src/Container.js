@@ -178,7 +178,7 @@ class Container extends React.Component {
   componentDidMount(){
     console.log(this.state.userInteraction)
     this.userInteractionCheck();
-    this.sessionCountDown = setInterval(this.sessionIntervalSetter, 250);
+    this.sessionCountDown = setInterval(this.sessionIntervalSetter, 1000);
     
   };
 

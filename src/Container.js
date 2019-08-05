@@ -1,5 +1,7 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
+import favicon from "./favicon.ico";
 import './styles.css'
 import PlayPauseToggle from "./PlayPauseToggle";
 import ResetButton from "./ResetButton";
@@ -259,6 +261,11 @@ class Container extends React.Component {
         Incremented/Decremented User Adjusted time: {this.state.sessionLength}
         <br /> 
         TimerType: {this.state.timerType} */}
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Stephen's Pomodoro Clock Project</title>
+          <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+        </Helmet>
         <header className="one boxes">
             <h1 className="common-color header">Pomodoro Clock!</h1>
         </header>

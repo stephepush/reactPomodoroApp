@@ -2,8 +2,8 @@ import React from "react";
 
 
 const timerStyle ={
-  color: "black",
-  fontSize: "7rem",
+  color: "#214900",
+  fontSize: "10rem",
   fontFamily: "DS-Digital",
 }
 const sessionTextStyle = {

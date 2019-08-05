@@ -1,4 +1,5 @@
 import React from "react";
+
 import { FiRefreshCcw } from "react-icons/fi";
 
 class ResetButton extends React.Component {
@@ -6,7 +7,7 @@ class ResetButton extends React.Component {
     return (
       <section className="boxes five">
         <button className="common-color reset" onClick={this.props.reset}>
-          <FiRefreshCcw />
+          <FiRefreshCcw size={70}/>
         </button>
       </section>
     );

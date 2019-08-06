@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-import favicon from "./favicon.ico";
+import icon from "./icon.svg";
 import './styles.css'
 import PlayPauseToggle from "./PlayPauseToggle";
 import ResetButton from "./ResetButton";
@@ -264,7 +264,7 @@ class Container extends React.Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Stephen's Pomodoro Clock Project</title>
-          <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+          <link rel="shortcut icon" href={ icon }sizes="any" type="image/svg+xml" />
         </Helmet>
         <header className="one boxes">
             <h1 className="common-color header">Pomodoro Clock!</h1>

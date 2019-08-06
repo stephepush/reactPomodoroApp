@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/reactPomodoroApp/static/css/main.6882037e.chunk.css",
-    "main.js": "/reactPomodoroApp/static/js/main.4e575b58.chunk.js",
-    "main.js.map": "/reactPomodoroApp/static/js/main.4e575b58.chunk.js.map",
+    "main.css": "/reactPomodoroApp/static/css/main.495da4a1.chunk.css",
+    "main.js": "/reactPomodoroApp/static/js/main.d808ae4a.chunk.js",
+    "main.js.map": "/reactPomodoroApp/static/js/main.d808ae4a.chunk.js.map",
     "runtime~main.js": "/reactPomodoroApp/static/js/runtime~main.233e0f60.js",
     "runtime~main.js.map": "/reactPomodoroApp/static/js/runtime~main.233e0f60.js.map",
-    "static/js/2.58c37161.chunk.js": "/reactPomodoroApp/static/js/2.58c37161.chunk.js",
-    "static/js/2.58c37161.chunk.js.map": "/reactPomodoroApp/static/js/2.58c37161.chunk.js.map",
+    "static/js/2.e1f79ba2.chunk.js": "/reactPomodoroApp/static/js/2.e1f79ba2.chunk.js",
+    "static/js/2.e1f79ba2.chunk.js.map": "/reactPomodoroApp/static/js/2.e1f79ba2.chunk.js.map",
     "index.html": "/reactPomodoroApp/index.html",
-    "precache-manifest.09deae888102a5ca3ae1d4aa0459c622.js": "/reactPomodoroApp/precache-manifest.09deae888102a5ca3ae1d4aa0459c622.js",
+    "precache-manifest.f084b328290a6cf49a2a55120929c29d.js": "/reactPomodoroApp/precache-manifest.f084b328290a6cf49a2a55120929c29d.js",
     "service-worker.js": "/reactPomodoroApp/service-worker.js",
-    "static/css/main.6882037e.chunk.css.map": "/reactPomodoroApp/static/css/main.6882037e.chunk.css.map"
+    "static/css/main.495da4a1.chunk.css.map": "/reactPomodoroApp/static/css/main.495da4a1.chunk.css.map",
+    "static/media/icon.svg": "/reactPomodoroApp/static/media/icon.63c5dc3b.svg"
   }
 }

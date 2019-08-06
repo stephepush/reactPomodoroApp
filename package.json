@@ -10,6 +10,7 @@
     "react-icons": "^3.7.0",
     "react-scripts": "3.0.1"
   },
+  "homepage": "http://stephepush.github.io/reactPomodoroApp",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,6 +35,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.1.0"
   }
 }
